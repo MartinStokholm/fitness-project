@@ -1,8 +1,6 @@
 import type { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { decode, getToken } from "next-auth/jwt";
-import { cookies } from "next/headers";
-
+import { jwtDecode } from "jwt-decode";
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -28,8 +26,17 @@ export const authOptions: NextAuthOptions = {
           },
         );
         const data = await loginResponse.json();
-        if (loginResponse.ok && data?.token) {
-          return data;
+        if (loginResponse.ok && data?.jwt) {
+          let token: { Name: string; Role: string; UserId: string } = jwtDecode(
+            data?.jwt,
+          );
+
+          return {
+            name: token.Name,
+            role: token.Role,
+            id: token.UserId,
+            email: credentials?.email,
+          };
         }
         return Promise.reject(new Error(data?.errors));
       },

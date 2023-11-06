@@ -18,12 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className="flex">
-          <Link className="mx-2 p-4" href={"profile"}>
-            My profile
-          </Link>
+        <nav className="flex justify-between">
           <Link className="mx-2 p-4" href={"dashboard"}>
             Dashboard
+          </Link>
+
+          <Link className="mx-2 p-4" href={"/api/auth/signout"}>
+            Logout
           </Link>
         </nav>
         <main className="flex min-h-screen flex-col items-center p-4">
