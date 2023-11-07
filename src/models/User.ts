@@ -1,3 +1,4 @@
+/*
 export type Login = {
   email: string;
   password: string;
@@ -23,3 +24,4 @@ type User = {
   accountType?: string;
 };
 export default User;
+*/
