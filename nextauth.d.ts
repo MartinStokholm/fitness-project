@@ -6,6 +6,10 @@ interface IUser extends DefaultUser {
    * Role of user
    */
   role?: string;
+  /**
+   * Token of user
+   */
+  token?: string;
 }
 declare module "next-auth" {
   interface User extends IUser {}

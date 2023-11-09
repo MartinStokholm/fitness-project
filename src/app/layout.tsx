@@ -1,9 +1,12 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import { SessionProvider } from "next-auth/react";
+import React, {ReactNode} from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -14,36 +17,38 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const session = await getServerSession(authOptions);
 
-  const role = session?.user?.role;
-  console.log(role);
+  if (!session) return <html></html>;
+  else if (session) {
+    const role = session?.user?.role;
 
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <nav className="flex justify-between bg-green-400">
-          <Link
-            className="mx-2 p-4 text-black font-semibold hover:text-white"
-            href={"dashboard/" + role?.toLowerCase()}
-          >
-            Dashboard
-          </Link>
+    return (
+      <html lang="en">
+        <body className={inter.className}>
+          <nav className="flex justify-between bg-green-400">
+            <Link
+              className="mx-2 p-4 text-black font-semibold hover:text-white"
+              href={"dashboard/" + role?.toLowerCase()}
+            >
+              Dashboard
+            </Link>
 
-          <Link
-            className="mx-2 p-4 text-black font-semibold hover:text-white"
-            href={"/api/auth/signout"}
-          >
-            Logout
-          </Link>
-        </nav>
+            <Link
+              className="mx-2 p-4 text-black font-semibold hover:text-white"
+              href={"/api/auth/signout"}
+            >
+              Logout
+            </Link>
+          </nav>
 
-        <main className="flex min-h-screen flex-col items-center p-4">
-          {children}
-        </main>
-      </body>
-    </html>
-  );
+          <main className="flex min-h-screen flex-col items-center p-4">
+            {children}
+          </main>
+        </body>
+      </html>
+    );
+  }
 }

@@ -37,6 +37,7 @@ export const authOptions: NextAuthOptions = {
             name: token.Name,
             email: credentials?.email,
             role: token.Role,
+            token: data?.jwt,
           };
         }
         return Promise.reject(new Error(data?.errors));
@@ -45,7 +46,6 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async jwt({ token, user, session }) {
-      console.log("jwt callback", { token, user, session });
       if (user) {
         return {
           ...token,
@@ -53,12 +53,12 @@ export const authOptions: NextAuthOptions = {
           name: user.name,
           role: user.role,
           email: user.email,
+          token: user.token,
         };
       }
       return token;
     },
     async session({ session, token, user }) {
-      console.log("session callback", { session, token, user });
       // Pass in role and id to the user session
       return {
         ...session,
@@ -66,6 +66,7 @@ export const authOptions: NextAuthOptions = {
           ...session.user,
           id: token.id,
           role: token.role,
+          token: token.token,
         },
       };
     },

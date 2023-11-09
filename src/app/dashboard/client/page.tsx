@@ -1,13 +1,36 @@
-export default function ClientPage() {
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import WorkoutProgram from "@/models/WorkoutProgram";
+import WorkoutProgramList from "@/components/WorkoutProgramList";
+
+export default async function ClientPage() {
+  const session = await getServerSession(authOptions);
+
+  const userId = session?.user?.id;
+  const token = session?.user?.token;
+  const url =
+    "https://afefitness2023.azurewebsites.net/api/WorkoutPrograms/client/" +
+    userId;
+
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await response.json();
+  console.log(data);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <>
       <h1>Client dashboard</h1>
       <div className="flex flex-wrap gap-2 p-4">
-        <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 p-4">
-          <h2 className="text-white font-semibold">Clients</h2>
-          <p className="text-white text-opacity-75"></p>
+        <div className="w-full p-4">
+          <h2 className="text-4xl pb-8">My WorkoutPrograms</h2>
+          <WorkoutProgramList workoutPrograms={data} />
         </div>
       </div>
-    </main>
+    </>
   );
 }
