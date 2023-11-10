@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4141b4a7-5896-4a6c-8aad-2d98794daf02" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/clients/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/exercises/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/reports/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/workoutprograms/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1699173069073</updated>
       <workItem from="1699173071838" duration="170000" />
-      <workItem from="1699542176224" duration="3253000" />
+      <workItem from="1699542176224" duration="4368000" />
     </task>
     <servers />
   </component>

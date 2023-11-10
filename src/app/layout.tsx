@@ -5,7 +5,6 @@ import "./globals.css";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import { SessionProvider } from "next-auth/react";
 import React, {ReactNode} from "react";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +19,6 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   const session = await getServerSession(authOptions);
-
   if (!session) return <html></html>;
   else if (session) {
     const role = session?.user?.role;
@@ -34,6 +32,12 @@ export default async function RootLayout({
               href={"dashboard/" + role?.toLowerCase()}
             >
               Dashboard
+            </Link>
+            <Link
+                className="mx-2 p-4 text-black font-semibold hover:text-white"
+                href={"/"}
+            >
+              Home
             </Link>
 
             <Link
