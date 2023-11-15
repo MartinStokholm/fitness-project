@@ -1,11 +1,11 @@
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import React, {ReactNode} from "react";
+import React, { ReactNode } from "react";
+import Provider from "@/app/context/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,15 +29,16 @@ export default async function RootLayout({
           <nav className="flex justify-between bg-green-400">
             <Link
               className="mx-2 p-4 text-black font-semibold hover:text-white"
-              href={"dashboard/" + role?.toLowerCase()}
+              href={"/dashboard/{role}"}
+              as={`/dashboard/${role?.toLowerCase()}`}
             >
               Dashboard
             </Link>
             <Link
-                className="mx-2 p-4 text-black font-semibold hover:text-white"
-                href={"/"}
+              className="mx-2 p-4 text-black font-semibold hover:text-white"
+              href={"/"}
             >
-              Home
+              Home (role: {role})
             </Link>
 
             <Link
@@ -49,7 +50,7 @@ export default async function RootLayout({
           </nav>
 
           <main className="flex min-h-screen flex-col items-center p-4">
-            {children}
+            <Provider session={session}>{children}</Provider>
           </main>
         </body>
       </html>

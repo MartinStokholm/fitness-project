@@ -13,8 +13,8 @@ export type NewPassword = {
 export type Token = {
   jwt: string;
 };
-
-type User = {
+*/
+export type User = {
   userId: number;
   firstName?: string;
   lastName?: string;
@@ -23,5 +23,3 @@ type User = {
   personalTrainerId?: number;
   accountType?: string;
 };
-export default User;
-*/
