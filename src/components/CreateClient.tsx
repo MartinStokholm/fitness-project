@@ -63,7 +63,7 @@ export default function CreateClient() {
     lastName: "",
     email: "",
     password: "",
-    personalTrainerId: 0,
+    personalTrainerId: Number(session?.user?.id),
     accountType: "Client",
   });
 
@@ -154,25 +154,6 @@ export default function CreateClient() {
           required
         />
       </div>
-
-      <div className="mb-4">
-        <label
-          htmlFor="personalTrainerId"
-          className="block text-sm font-medium text-gray-600"
-        >
-          Personal Trainer ID
-        </label>
-        <input
-          type="number"
-          id="personalTrainerId"
-          name="personalTrainerId"
-          value={formData.personalTrainerId}
-          onChange={handleChange}
-          className="mt-1 p-2 w-full border rounded-md"
-          required
-        />
-      </div>
-
       <div className="text-center">
         <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">
           Submit
