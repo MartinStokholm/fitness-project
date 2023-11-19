@@ -5,39 +5,18 @@ import { User } from "@/models/User";
 import axios from "axios";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import NotifyToast from "@/components/NotifyToast";
 
 export default function CreatePersonalTrainer() {
   const { data: session } = useSession();
-
-  const notifySuccess = () =>
-    toast.success("User created!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "light",
-    });
-  const notifyError = () =>
-    toast.error("Error!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "light",
-    });
 
   const mutation = useMutation({
     mutationFn: async (newUser: User) => {
       const url = "https://afefitness2023.azurewebsites.net/api/Users";
 
       if (session?.user?.token === undefined) {
-        notifyError();
+        NotifyToast({ type: "error", message: "Authentication error!" });
         return;
       }
       try {
@@ -47,12 +26,16 @@ export default function CreatePersonalTrainer() {
           },
         });
 
-        console.log(response);
-        notifySuccess();
+        NotifyToast({
+          type: "success",
+          message: "Personal Trainer created successfully!",
+        });
         return response;
       } catch (error) {
-        notifyError();
-        console.error(error);
+        NotifyToast({
+          type: "error",
+          message: "Error creating Personal Trainer!",
+        });
         throw error;
       }
     },

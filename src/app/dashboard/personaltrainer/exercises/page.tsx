@@ -19,10 +19,18 @@ export default async function ExercisesPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <div className="w-full p-4">
-        <h2 className="text-4xl pb-8">My My exercises</h2>
-        <ExerciseList exercises={data} />
-        <h2 className="text-4xl pb-8">Create an exercise</h2>
-        <CreateExercise />
+        <div className="bg-zinc-200 p-6 shadow-2xl border-4 border-gray-300 rounded-t-2xl mb-12">
+          <h2 className="text-4xl text-center text-gray-800 pb-8">
+            My exercises
+          </h2>
+          <ExerciseList exercises={data} />
+        </div>
+        <div className="bg-zinc-200 p-6 shadow-2xl border-4 border-gray-300 rounded-t-2xl mb-12">
+          <h2 className="text-4xl text-center text-gray-800 pb-8">
+            Create an exercise
+          </h2>
+          <CreateExercise />
+        </div>
       </div>
     </main>
   );
