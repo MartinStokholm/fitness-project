@@ -2,7 +2,6 @@
 
 import WorkoutProgram from "@/models/WorkoutProgram";
 import WorkoutProgramDetails from "@/components/WorkoutProgramDetails";
-import workoutProgram from "@/models/WorkoutProgram";
 import { useState } from "react";
 
 export default function WorkoutProgramList({

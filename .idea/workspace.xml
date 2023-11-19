@@ -5,20 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4141b4a7-5896-4a6c-8aad-2d98794daf02" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ClientList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CreateClient.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CreatePersonalTrainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/hooks/useToast.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/utils/checkSessionAuth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/context/provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/context/provider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/manager/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/manager/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/clients/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/clients/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/exercises/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/exercises/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/reports/page.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddExercise.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddExercise.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateClient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateClient.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateExercise.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateExercise.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreatePersonalTrainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreatePersonalTrainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateWorkoutProgram.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateWorkoutProgram.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ExerciseList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ExerciseList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NotifyToast.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/WorkoutProgramDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WorkoutProgramDetails.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WorkoutProgramList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WorkoutProgramList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -52,7 +54,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/msldk/sovsen/Frontend/fitness/fitness-project/src/app/dashboard/personaltrainer/reports&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -72,6 +75,7 @@
       <recent name="C:\Users\msldk\sovsen\Frontend\fitness\fitness-project\src\app\dashboard\personaltrainer\clients" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\msldk\sovsen\Frontend\fitness\fitness-project\src\app\hooks" />
       <recent name="C:\Users\msldk\sovsen\Frontend\fitness\fitness-project\src\app\dashboard\personaltrainer\workoutprograms" />
     </key>
   </component>
@@ -91,7 +95,9 @@
       <workItem from="1699950393870" duration="3278000" />
       <workItem from="1699955363879" duration="4629000" />
       <workItem from="1699980661754" duration="599000" />
-      <workItem from="1700069636104" duration="6161000" />
+      <workItem from="1700069636104" duration="11783000" />
+      <workItem from="1700162999054" duration="2900000" />
+      <workItem from="1700403932102" duration="8731000" />
     </task>
     <servers />
   </component>

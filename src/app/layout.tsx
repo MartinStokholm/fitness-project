@@ -26,7 +26,11 @@ export default async function RootLayout({
     return (
       <html lang="en">
         <body className={inter.className}>
-          <nav className="flex justify-between bg-green-400">
+          <div></div>
+          <header
+            className="bg-gradient-to-r from-green-400 to-blue-500 flex justify-center items-center"
+            style={{ height: "2.5rem" }}
+          >
             <Link
               className="mx-2 p-4 text-black font-semibold hover:text-white"
               href={"/dashboard/{role}"}
@@ -40,7 +44,12 @@ export default async function RootLayout({
             >
               Home (role: {role})
             </Link>
+          </header>
 
+          <main className="flex min-h-screen flex-col items-center p-4">
+            <Provider session={session}>{children}</Provider>
+          </main>
+          <nav className="flex justify-between bg-blue-500">
             <Link
               className="mx-2 p-4 text-black font-semibold hover:text-white"
               href={"/api/auth/signout"}
@@ -48,10 +57,6 @@ export default async function RootLayout({
               Logout
             </Link>
           </nav>
-
-          <main className="flex min-h-screen flex-col items-center p-4">
-            <Provider session={session}>{children}</Provider>
-          </main>
         </body>
       </html>
     );
