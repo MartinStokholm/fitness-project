@@ -1,5 +1,3 @@
-"use client";
-
 import WorkoutProgram from "@/models/WorkoutProgram";
 
 export default function WorkoutProgramDetails({

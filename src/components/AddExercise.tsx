@@ -6,8 +6,7 @@ import { ChangeEvent, FormEvent } from "react";
 import { useSession } from "next-auth/react";
 import Exercise from "@/models/Exercise";
 import WorkoutProgram from "@/models/WorkoutProgram";
-import { ToastContainer } from "react-toastify";
-import NotifyToast from "@/components/NotifyToast";
+import useToast from "@/app/hooks/useToast";
 
 export default function AddExercise({
   workoutPrograms,
@@ -22,6 +21,8 @@ export default function AddExercise({
     Exercise | undefined
   >(undefined);
 
+  const showToast = useToast();
+
   const mutation = useMutation({
     mutationFn: async (newExercise: Exercise) => {
       const url =
@@ -29,7 +30,7 @@ export default function AddExercise({
         workoutProgramId;
 
       if (session?.user?.token === undefined) {
-        NotifyToast({ type: "error", message: "Authentication error!" });
+        showToast("Authentication error!", "error");
         return;
       }
       try {
@@ -41,14 +42,11 @@ export default function AddExercise({
         });
 
         console.log(response);
-        NotifyToast({
-          type: "success",
-          message: "Exercise created successfully!",
-        });
+        showToast("Exercise created successfully!", "success");
         return response;
       } catch (error) {
-        NotifyToast({ type: "error", message: "Error creating exercise!" });
         console.error(error);
+        showToast("Error creating exercise!", "error");
         throw error;
       }
     },
@@ -111,7 +109,6 @@ export default function AddExercise({
 
   return (
     <>
-      <ToastContainer />
       <form className="max-w-md mx-auto mt-8" onSubmit={handleSubmit}>
         {/* Workout Program Dropdown */}
         <div className="mb-4">
@@ -256,6 +253,14 @@ export default function AddExercise({
             </div>
           </>
         )}
+        <div className="mb-4">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Submit
+          </button>
+        </div>
 
         <div className="mb-4">
           <button
@@ -264,17 +269,8 @@ export default function AddExercise({
             className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             {addingExistingExercise
-              ? "Add New Exercise"
-              : "Add Existing Exercise"}
-          </button>
-        </div>
-
-        <div className="mb-4">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Submit
+              ? "Create New Exercise?"
+              : "Use existing Exercise?"}
           </button>
         </div>
       </form>

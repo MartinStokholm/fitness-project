@@ -11,7 +11,7 @@ export default function ExerciseList({
         {exercises?.map((exercise) => (
           <li key={exercise.exerciseId} className="py-2">
             <div className="flex justify-between items-center w-full">
-              <div>
+              <div className="min-w-[400px]">
                 <h3 className="text-lg font-semibold">{exercise.name}</h3>
                 <p className="text-gray-500">{exercise.description}</p>
               </div>

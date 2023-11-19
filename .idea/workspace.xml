@@ -5,21 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4141b4a7-5896-4a6c-8aad-2d98794daf02" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/AddExercise.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NotifyToast.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/hooks/useToast.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/utils/checkSessionAuth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/client/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/client/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/manager/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/manager/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/clients/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/clients/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/exercises/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/exercises/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/workoutprograms/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/workoutprograms/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/reports/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddExercise.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddExercise.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CreateClient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateClient.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CreateExercise.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateExercise.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CreatePersonalTrainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreatePersonalTrainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CreateWorkoutProgram.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateWorkoutProgram.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ExerciseList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ExerciseList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WorkoutProgramList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WorkoutProgramList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NotifyToast.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WorkoutProgramDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WorkoutProgramDetails.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -74,6 +75,7 @@
       <recent name="C:\Users\msldk\sovsen\Frontend\fitness\fitness-project\src\app\dashboard\personaltrainer\clients" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\msldk\sovsen\Frontend\fitness\fitness-project\src\app\hooks" />
       <recent name="C:\Users\msldk\sovsen\Frontend\fitness\fitness-project\src\app\dashboard\personaltrainer\workoutprograms" />
     </key>
   </component>
@@ -95,7 +97,7 @@
       <workItem from="1699980661754" duration="599000" />
       <workItem from="1700069636104" duration="11783000" />
       <workItem from="1700162999054" duration="2900000" />
-      <workItem from="1700403932102" duration="4045000" />
+      <workItem from="1700403932102" duration="8731000" />
     </task>
     <servers />
   </component>

@@ -7,8 +7,7 @@ import { useSession } from "next-auth/react";
 import Exercise from "@/models/Exercise";
 import WorkoutProgram from "@/models/WorkoutProgram";
 import { User } from "@/models/User";
-import { ToastContainer } from "react-toastify";
-import NotifyToast from "@/components/NotifyToast";
+import useToast from "@/app/hooks/useToast";
 
 export default function CreateWorkoutProgram({
   exercises,
@@ -19,13 +18,14 @@ export default function CreateWorkoutProgram({
 }) {
   const { data: session } = useSession();
 
+  const showToast = useToast();
   const mutation = useMutation({
     mutationFn: async (newWorkout: WorkoutProgram) => {
       const url =
         "https://afefitness2023.azurewebsites.net/api/WorkoutPrograms";
 
       if (session?.user?.token === undefined) {
-        NotifyToast({ type: "error", message: "Authentication error!" });
+        showToast("Authentication error!", "error");
         return;
       }
       try {
@@ -35,16 +35,10 @@ export default function CreateWorkoutProgram({
             Accept: "application/json",
           },
         });
-        NotifyToast({
-          type: "success",
-          message: "Workout Program created successfully!",
-        });
+        showToast("Workout Program created successfully!", "success");
         return response;
       } catch (error) {
-        NotifyToast({
-          type: "error",
-          message: "Error creating Workout Program!",
-        });
+        showToast("Error creating workout program!", "error");
         throw error;
       }
     },
@@ -70,7 +64,6 @@ export default function CreateWorkoutProgram({
       ...prevData,
       exercises: [...prevData.exercises, selectedExercise],
     }));
-    console.log(workoutProgramData);
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -79,127 +72,124 @@ export default function CreateWorkoutProgram({
   };
 
   return (
-    <>
-      <ToastContainer />
-      <form className="max-w-md mx-auto mt-8" onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Workout Program Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={workoutProgramData.name}
-            onChange={handleChangeWorkoutProgram}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
+    <form className="max-w-md mx-auto mt-8" onSubmit={handleSubmit}>
+      <div className="mb-4">
+        <label
+          htmlFor="name"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Workout Program Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={workoutProgramData.name}
+          onChange={handleChangeWorkoutProgram}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
 
-        <div className="mb-4">
-          <label
-            htmlFor="description"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Description
-          </label>
-          <textarea
-            id="description"
-            name="description"
-            value={workoutProgramData.description}
-            onChange={handleChangeWorkoutProgram}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
+      <div className="mb-4">
+        <label
+          htmlFor="description"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Description
+        </label>
+        <textarea
+          id="description"
+          name="description"
+          value={workoutProgramData.description}
+          onChange={handleChangeWorkoutProgram}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+      </div>
 
-        {/* Client Dropdown */}
-        <div className="mb-4">
-          <label
-            htmlFor="clientDropdown"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Select Client
-          </label>
-          <select
-            id="clientDropdown"
-            name="clientDropdown"
-            onChange={(e) => {
-              const selectedClientId = parseInt(e.target.value, 10);
-              setWorkoutProgramData((prevData) => ({
-                ...prevData,
-                clientId: selectedClientId,
-              }));
-            }}
-            value={workoutProgramData.clientId}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          >
-            <option value="" disabled>
-              Choose a client
+      {/* Client Dropdown */}
+      <div className="mb-4">
+        <label
+          htmlFor="clientDropdown"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Select Client
+        </label>
+        <select
+          id="clientDropdown"
+          name="clientDropdown"
+          onChange={(e) => {
+            const selectedClientId = parseInt(e.target.value, 10);
+            setWorkoutProgramData((prevData) => ({
+              ...prevData,
+              clientId: selectedClientId,
+            }));
+          }}
+          value={workoutProgramData.clientId}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        >
+          <option value="" disabled>
+            Choose a client
+          </option>
+          {clients?.map((client) => (
+            <option key={client?.userId} value={client?.userId}>
+              {client?.firstName}
             </option>
-            {clients?.map((client) => (
-              <option key={client?.userId} value={client?.userId}>
-                {client?.firstName}
-              </option>
-            ))}
-          </select>
-        </div>
+          ))}
+        </select>
+      </div>
 
-        {/* Exercise Dropdown */}
-        <div className="mb-4">
-          <label
-            htmlFor="exerciseDropdown"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            Select Exercise
-          </label>
-          <select
-            id="exerciseDropdown"
-            name="exerciseDropdown"
-            onChange={(e) => {
-              const selectedExerciseId = parseInt(e.target.value, 10);
-              const selectedExercise = exercises?.find(
-                (exercise) => exercise.exerciseId === selectedExerciseId,
-              );
-              if (selectedExercise) {
-                handleAddExercise(selectedExercise);
-              }
-            }}
-            value="" // Set the default value to an empty string
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          >
-            <option value="" disabled>
-              Choose an exercise
+      {/* Exercise Dropdown */}
+      <div className="mb-4">
+        <label
+          htmlFor="exerciseDropdown"
+          className="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Select Exercise
+        </label>
+        <select
+          id="exerciseDropdown"
+          name="exerciseDropdown"
+          onChange={(e) => {
+            const selectedExerciseId = parseInt(e.target.value, 10);
+            const selectedExercise = exercises?.find(
+              (exercise) => exercise.exerciseId === selectedExerciseId,
+            );
+            if (selectedExercise) {
+              handleAddExercise(selectedExercise);
+            }
+          }}
+          value="" // Set the default value to an empty string
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        >
+          <option value="" disabled>
+            Choose an exercise
+          </option>
+          {exercises?.map((exercise) => (
+            <option key={exercise.exerciseId} value={exercise.exerciseId}>
+              {exercise.name}
             </option>
-            {exercises?.map((exercise) => (
-              <option key={exercise.exerciseId} value={exercise.exerciseId}>
-                {exercise.name}
-              </option>
-            ))}
-          </select>
-        </div>
+          ))}
+        </select>
+      </div>
 
-        {/* Display Selected Exercises */}
-        <div className="mb-4">
-          <h2 className="text-xl font-bold mb-2">Selected Exercises</h2>
-          <ul>
-            {workoutProgramData.exercises.map((exercise) => (
-              <li key={exercise.exerciseId}>{exercise.name}</li>
-            ))}
-          </ul>
-        </div>
+      {/* Display Selected Exercises */}
+      <div className="mb-4">
+        <h2 className="text-xl font-bold mb-2">Selected Exercises</h2>
+        <ul>
+          {workoutProgramData.exercises.map((exercise) => (
+            <li key={exercise.exerciseId}>{exercise.name}</li>
+          ))}
+        </ul>
+      </div>
 
-        <div className="mb-4">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Create Workout Program
-          </button>
-        </div>
-      </form>
-    </>
+      <div className="mb-4">
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Create Workout Program
+        </button>
+      </div>
+    </form>
   );
 }

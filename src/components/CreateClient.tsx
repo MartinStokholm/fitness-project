@@ -6,17 +6,19 @@ import axios from "axios";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
-import NotifyToast from "@/components/NotifyToast";
+import useToast from "@/app/hooks/useToast";
 
 export default function CreateClient() {
   const { data: session } = useSession();
+
+  const showToast = useToast();
 
   const mutation = useMutation({
     mutationFn: async (newUser: User) => {
       const url = "https://afefitness2023.azurewebsites.net/api/Users";
 
       if (session?.user?.token === undefined) {
-        NotifyToast({ type: "error", message: "Authentication error!" });
+        showToast("Error creating Client!", "error");
         return;
       }
       try {
@@ -25,17 +27,10 @@ export default function CreateClient() {
             Authorization: `Bearer ${session.user.token}`,
           },
         });
-
-        NotifyToast({
-          type: "success",
-          message: "Client created successfully!",
-        });
+        showToast("Client created!", "success");
         return response;
       } catch (error) {
-        NotifyToast({
-          type: "error",
-          message: "Error creating Client!",
-        });
+        showToast("Error creating Client!", "error");
         throw error;
       }
     },
