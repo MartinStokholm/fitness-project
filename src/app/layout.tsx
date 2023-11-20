@@ -37,13 +37,13 @@ export default async function RootLayout({
               href={"/dashboard/{role}"}
               as={`/dashboard/${role?.toLowerCase()}`}
             >
-              Dashboard
+              Dashboard ({role})
             </Link>
             <Link
               className="mx-2 p-4 text-black font-semibold hover:text-white"
               href={"/"}
             >
-              Home (role: {role})
+              Home
             </Link>
           </header>
 
