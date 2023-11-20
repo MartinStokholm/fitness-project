@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4141b4a7-5896-4a6c-8aad-2d98794daf02" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CreatePersonalTrainerForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/manager/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/manager/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddExercise.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddExercise.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CreateExerciseForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateExerciseForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CreatePersonalTrainer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CreateWorkoutProgram.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateWorkoutProgram.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WorkoutProgramList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WorkoutProgramList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/actions.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +88,7 @@
       <workItem from="1699980661754" duration="599000" />
       <workItem from="1700069636104" duration="11783000" />
       <workItem from="1700162999054" duration="2900000" />
-      <workItem from="1700403932102" duration="32151000" />
+      <workItem from="1700403932102" duration="34124000" />
     </task>
     <servers />
   </component>

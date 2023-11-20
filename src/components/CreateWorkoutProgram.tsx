@@ -48,31 +48,6 @@ export default function CreateWorkoutProgram({
           ))}
         </select>
       </div>
-
-      {/* Exercise Dropdown */}
-      <div className="mb-4">
-        <label
-          htmlFor="exerciseDropdown"
-          className="block text-gray-700 text-sm font-bold mb-2"
-        >
-          Select Exercise
-        </label>
-        <select
-          id="exercise"
-          name="exercise"
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        >
-          <option value="" disabled>
-            Choose an exercise
-          </option>
-          {exercises?.map((exercise) => (
-            <option key={exercise.exerciseId} value={exercise.exerciseId}>
-              {exercise.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
       <FormSubmit pending={pending} state={state} />
     </form>
   );
