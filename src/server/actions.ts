@@ -143,3 +143,55 @@ export async function createExercise(prevState: any, formData: FormData) {
     return { message: `Failed with error: ${error}`, success: false };
   }
 }
+
+export async function addExercise(prevState: any, formData: FormData) {
+  console.log(formData);
+  try {
+    const session = await getServerSession(authOptions);
+    const exerciseToAdd = {
+      exerciseId: Number(formData.get("exerciseId")),
+      workoutProgramId: Number(formData.get("workoutProgramId")),
+    };
+    const url =
+      "https://afefitness2023.azurewebsites.net/api/Exercises/Program/" +
+      formData.get("workoutProgramId");
+    await axios.post(url, exerciseToAdd, {
+      headers: {
+        Authorization: `Bearer ${session?.user?.token}`,
+        Accept: "application/json",
+      },
+    });
+    revalidateTag("trainerWorkoutPrograms");
+    revalidateTag("clientWorkoutPrograms");
+    return { message: "Exercise added successfully", success: true };
+  } catch (error) {
+    return { message: `Failed with error: ${error}`, success: false };
+  }
+}
+
+export async function createWorkoutProgram(prevState: any, formData: FormData) {
+  console.log(formData);
+  try {
+    const session = await getServerSession(authOptions);
+    const newWorkoutProgram = {
+      workoutProgramId: 0,
+      name: formData.get("name"),
+      description: formData.get("description"),
+      exercises: [],
+      personalTrainerId: Number(session?.user?.id),
+    };
+    const url = "https://afefitness2023.azurewebsites.net/api/WorkoutPrograms";
+    const response = await axios.post(url, newWorkoutProgram, {
+      headers: {
+        Authorization: `Bearer ${session?.user?.token}`,
+        Accept: "application/json",
+      },
+    });
+    console.log(response);
+    revalidateTag("trainerWorkoutPrograms");
+    revalidateTag("clientWorkoutPrograms");
+    return { message: "Workout program created successfully", success: true };
+  } catch (error) {
+    return { message: `Failed with error: ${error}`, success: false };
+  }
+}

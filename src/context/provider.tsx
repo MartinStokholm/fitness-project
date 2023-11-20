@@ -12,12 +12,5 @@ export default function Provider({
   session: any;
 }) {
   const [client] = useState(new QueryClient());
-  return (
-    <SessionProvider session={session}>
-      <QueryClientProvider client={client}>
-        {children}
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </SessionProvider>
-  );
+  return <SessionProvider session={session}>{children}</SessionProvider>;
 }
