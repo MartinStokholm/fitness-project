@@ -145,7 +145,6 @@ export async function createExercise(prevState: any, formData: FormData) {
 }
 
 export async function addExercise(prevState: any, formData: FormData) {
-  console.log(formData);
   try {
     const session = await getServerSession(authOptions);
     const exerciseToAdd = {
@@ -170,15 +169,19 @@ export async function addExercise(prevState: any, formData: FormData) {
 }
 
 export async function createWorkoutProgram(prevState: any, formData: FormData) {
-  console.log(formData);
+  const exercises = await getAllExercises();
+  const exercise = exercises?.data?.find(
+    (exercise) => exercise.exerciseId === Number(formData.get("exercise")),
+  );
   try {
     const session = await getServerSession(authOptions);
     const newWorkoutProgram = {
       workoutProgramId: 0,
       name: formData.get("name"),
       description: formData.get("description"),
-      exercises: [],
+      exercises: exercise,
       personalTrainerId: Number(session?.user?.id),
+      clientId: Number(formData.get("clientId")),
     };
     const url = "https://afefitness2023.azurewebsites.net/api/WorkoutPrograms";
     const response = await axios.post(url, newWorkoutProgram, {
@@ -191,6 +194,36 @@ export async function createWorkoutProgram(prevState: any, formData: FormData) {
     revalidateTag("trainerWorkoutPrograms");
     revalidateTag("clientWorkoutPrograms");
     return { message: "Workout program created successfully", success: true };
+  } catch (error) {
+    console.log(error);
+    return { message: `Failed with error: ${error}`, success: false };
+  }
+}
+
+export async function createPersonalTrainer(
+  prevState: any,
+  formData: FormData,
+) {
+  const url = "https://afefitness2023.azurewebsites.net/api/Users";
+  const session = await getServerSession(authOptions);
+  const newPersonalTrainer = {
+    userId: 0,
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+    email: formData.get("email"),
+    password: formData.get("password"),
+    accountType: "PersonalTrainer",
+  };
+
+  try {
+    const response = await axios.post(url, newPersonalTrainer, {
+      headers: {
+        Authorization: `Bearer ${session?.user?.token}`,
+      },
+    });
+    console.log(response);
+    revalidateTag("clients");
+    return { message: "Personal Trainer created successfully", success: true };
   } catch (error) {
     return { message: `Failed with error: ${error}`, success: false };
   }

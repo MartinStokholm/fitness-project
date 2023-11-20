@@ -1,4 +1,4 @@
-import CreatePersonalTrainer from "@/components/CreatePersonalTrainer";
+import CreatePersonalTrainerForm from "@/components/CreatePersonalTrainerForm";
 
 const ManagerPage = () => {
   return (
@@ -7,7 +7,7 @@ const ManagerPage = () => {
         <h2 className="text-4xl text-center text-gray-800 pb-8">
           Create a personal trainer
         </h2>
-        <CreatePersonalTrainer />
+        <CreatePersonalTrainerForm />
       </div>
     </>
   );

@@ -18,7 +18,7 @@ export default function WorkoutProgramList({
   return workoutPrograms?.map((workoutProgram) => (
     <div
       key={workoutProgram.workoutProgramId}
-      className={`py-2 px-4 bg-green-100 cursor-pointer ${
+      className={`py-2 px-4 bg-blue-100 cursor-pointer ${
         expandedRow === workoutProgram.workoutProgramId ? "rounded-b" : ""
       }`}
       onClick={() => handleRowClick(workoutProgram.workoutProgramId)}
