@@ -1,4 +1,6 @@
-import { User } from "@/models/User";
+"use client";
+
+import User from "@/models/User";
 
 export default function ClientList({
   clients,

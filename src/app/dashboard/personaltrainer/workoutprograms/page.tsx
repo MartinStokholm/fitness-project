@@ -1,15 +1,12 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import WorkoutProgramList from "@/app/components/WorkoutProgramList";
-import CreateWorkoutProgram from "@/app/components/CreateWorkoutProgram";
-import AddExercise from "@/app/components/AddExercise";
+import WorkoutProgramList from "@/components/WorkoutProgramList";
+import CreateWorkoutProgram from "@/components/CreateWorkoutProgram";
+import AddExercise from "@/components/AddExercise";
 import { ToastContainer } from "react-toastify";
 import {
   getAllClients,
   getAllExercises,
   getTrainerWorkoutPrograms,
-} from "@/app/server/actions";
-import workoutProgram from "@/models/WorkoutProgram";
+} from "@/server/actions";
 
 export default async function WorkoutProgramsPage() {
   const workoutPrograms = await getTrainerWorkoutPrograms();

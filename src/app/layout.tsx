@@ -5,7 +5,7 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import React, { ReactNode } from "react";
-import Provider from "@/app/context/provider";
+import Provider from "@/context/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import Exercise from "@/models/Exercise";
 import WorkoutProgram from "@/models/WorkoutProgram";
 import { User } from "@/models/User";
-import useToast from "@/app/hooks/useToast";
+import useToast from "@/hooks/useToast";
 
 export default function CreateWorkoutProgram({
   exercises,

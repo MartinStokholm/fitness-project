@@ -5,7 +5,7 @@ import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useSession } from "next-auth/react";
 import Exercise from "@/models/Exercise";
-import useToast from "@/app/hooks/useToast";
+import useToast from "@/hooks/useToast";
 
 export default function CreateExercise() {
   const { data: session } = useSession();

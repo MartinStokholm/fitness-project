@@ -6,7 +6,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
-import useToast from "@/app/hooks/useToast";
+import useToast from "@/hooks/useToast";
 
 export default function CreatePersonalTrainer() {
   const { data: session } = useSession();

@@ -2,9 +2,11 @@
 
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import { revalidateTag } from "next/cache";
 import User from "@/models/User";
 import WorkoutProgram from "@/models/WorkoutProgram";
 import Exercise from "@/models/Exercise";
+import axios from "axios";
 
 export async function getAllClients() {
   const session = await getServerSession(authOptions);
@@ -12,12 +14,11 @@ export async function getAllClients() {
   const url = "https://afefitness2023.azurewebsites.net/api/Users/Clients";
   try {
     const response = await fetch(url, {
+      next: { tags: ["clients"] },
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        ContentType: "application/json",
-      },
+      headers: { Authorization: `Bearer ${token}` },
     });
+
     const data: User[] = await response.json();
     return { data };
   } catch (error) {
@@ -32,6 +33,7 @@ export async function getTrainerWorkoutPrograms() {
     const url =
       "https://afefitness2023.azurewebsites.net/api/WorkoutPrograms/trainer/";
     const response = await fetch(url, {
+      next: { tags: ["trainerWorkoutPrograms"] },
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -40,7 +42,6 @@ export async function getTrainerWorkoutPrograms() {
     const data: WorkoutProgram[] = await response.json();
     return { data };
   } catch (error) {
-    console.log(error);
     return { error: Error };
   }
 }
@@ -55,16 +56,15 @@ export async function getClientWorkoutPrograms() {
       "https://afefitness2023.azurewebsites.net/api/WorkoutPrograms/client/" +
       userId;
     const response = await fetch(url, {
+      next: { tags: ["clientWorkoutPrograms"] },
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(userId);
     const data: WorkoutProgram[] = await response.json();
     return { data };
   } catch (error) {
-    console.log(error);
     return { error: Error };
   }
 }
@@ -75,6 +75,7 @@ export async function getAllExercises() {
     const token = session?.user?.token;
     const url = "https://afefitness2023.azurewebsites.net/api/Exercises/";
     const response = await fetch(url, {
+      next: { tags: ["exercises"] },
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -84,5 +85,33 @@ export async function getAllExercises() {
     return { data };
   } catch (error) {
     return { error: Error };
+  }
+}
+
+export async function createClient(prevState: any, formData: FormData) {
+  try {
+    const session = await getServerSession(authOptions);
+    const token = session?.user?.token;
+    console.log(session);
+    const newClient = {
+      userId: 0,
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastName"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+      personalTrainerId: session?.user?.id,
+      accountType: "Client",
+    };
+    const url = "https://afefitness2023.azurewebsites.net/api/Users";
+    const response = await axios.post(url, newClient, {
+      headers: {
+        Authorization: `Bearer ${session?.user?.token}`,
+        Accept: "application/json",
+      },
+    });
+    revalidateTag("clients");
+    return { message: "Client created successfully" };
+  } catch (error) {
+    return { message: `Failed with error: ${error}` };
   }
 }

@@ -6,7 +6,7 @@ import { ChangeEvent, FormEvent } from "react";
 import { useSession } from "next-auth/react";
 import Exercise from "@/models/Exercise";
 import WorkoutProgram from "@/models/WorkoutProgram";
-import useToast from "@/app/hooks/useToast";
+import useToast from "@/hooks/useToast";
 
 export default function AddExercise({
   workoutPrograms,

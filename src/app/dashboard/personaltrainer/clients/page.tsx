@@ -1,6 +1,7 @@
-import CreateClient from "@/app/components/CreateClient";
-import ClientList from "@/app/components/ClientList";
-import { getAllClients } from "@/app/server/actions";
+import CreateClientForm from "@/components/CreateClient";
+import ClientList from "@/components/ClientList";
+import { getAllClients } from "@/server/actions";
+
 export default async function ClientsPage() {
   const clients = await getAllClients();
 
@@ -11,13 +12,13 @@ export default async function ClientsPage() {
           <h2 className="text-4xl text-center text-gray-800 pb-8">
             My Clients
           </h2>
-          <ClientList clients={clients.data} />
+          <ClientList clients={clients?.data} />
         </div>
         <div className="bg-zinc-200 p-6 shadow-2xl border-4 border-gray-300 rounded-t-2xl mb-12">
           <h2 className="text-4xl text-center text-gray-800 pb-8">
             Create new client
           </h2>
-          <CreateClient />
+          <CreateClientForm />
         </div>
       </div>
     </main>

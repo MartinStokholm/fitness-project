@@ -1,5 +1,5 @@
-import WorkoutProgramList from "@/app/components/WorkoutProgramList";
-import { getClientWorkoutPrograms } from "@/app/server/actions";
+import WorkoutProgramList from "@/components/WorkoutProgramList";
+import { getClientWorkoutPrograms } from "@/server/actions";
 
 export default async function ClientPage() {
   const workoutPrograms = await getClientWorkoutPrograms();

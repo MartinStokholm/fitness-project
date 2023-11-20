@@ -1,6 +1,6 @@
-import ExerciseList from "@/app/components/ExerciseList";
-import CreateExercise from "@/app/components/CreateExercise";
-import { getAllExercises } from "@/app/server/actions";
+import ExerciseList from "@/components/ExerciseList";
+import CreateExercise from "@/components/CreateExercise";
+import { getAllExercises } from "@/server/actions";
 
 export default async function ExercisesPage() {
   const exercises = await getAllExercises();

@@ -1,7 +1,7 @@
 "use client";
 
 import WorkoutProgram from "@/models/WorkoutProgram";
-import WorkoutProgramDetails from "@/app/components/WorkoutProgramDetails";
+import WorkoutProgramDetails from "@/components/WorkoutProgramDetails";
 import { useState } from "react";
 
 export default function WorkoutProgramList({
