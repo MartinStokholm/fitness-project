@@ -6,8 +6,9 @@ import { useFormStatus, useFormState } from "react-dom";
 export default function CreateClientForm() {
   let initialState = {
     message: null,
+    success: null,
   };
-  const { pending } = useFormStatus();
+  const { pending, data } = useFormStatus();
   const [state, formAction] = useFormState(createClient, initialState);
 
   return (
@@ -73,7 +74,7 @@ export default function CreateClientForm() {
             required
           />
         </div>
-        <div className="text-center">
+        <div className="mb-4 text-center">
           <button
             type="submit"
             aria-disabled={pending}

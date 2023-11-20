@@ -99,19 +99,47 @@ export async function createClient(prevState: any, formData: FormData) {
       lastName: formData.get("lastName"),
       email: formData.get("email"),
       password: formData.get("password"),
-      personalTrainerId: session?.user?.id,
+      personalTrainerId: Number(session?.user?.id),
       accountType: "Client",
     };
     const url = "https://afefitness2023.azurewebsites.net/api/Users";
-    const response = await axios.post(url, newClient, {
+    await axios.post(url, newClient, {
       headers: {
         Authorization: `Bearer ${session?.user?.token}`,
         Accept: "application/json",
       },
     });
     revalidateTag("clients");
-    return { message: "Client created successfully" };
+    return { message: "Client created successfully", success: true };
   } catch (error) {
-    return { message: `Failed with error: ${error}` };
+    return { message: `Failed with error: ${error}`, success: false };
+  }
+}
+
+export async function createExercise(prevState: any, formData: FormData) {
+  try {
+    const session = await getServerSession(authOptions);
+    const token = session?.user?.token;
+    console.log(session);
+    const newExercise = {
+      exerciseId: 0,
+      name: formData.get("name"),
+      description: formData.get("description"),
+      sets: formData.get("sets"),
+      repetitions: formData.get("repetitions"),
+      time: formData.get("time"),
+      personalTrainerId: Number(session?.user?.id),
+    };
+    const url = "https://afefitness2023.azurewebsites.net/api/Exercises";
+    await axios.post(url, newExercise, {
+      headers: {
+        Authorization: `Bearer ${session?.user?.token}`,
+        Accept: "application/json",
+      },
+    });
+    revalidateTag("exercises");
+    return { message: "Exercise created successfully", success: true };
+  } catch (error) {
+    return { message: `Failed with error: ${error}`, success: false };
   }
 }

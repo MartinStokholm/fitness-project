@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import React, { ReactNode } from "react";
 import Provider from "@/context/provider";
+import { ToastContainer } from "react-toastify";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -47,7 +48,10 @@ export default async function RootLayout({
           </header>
 
           <main className="flex min-h-screen flex-col items-center p-4">
-            <Provider session={session}>{children}</Provider>
+            <Provider session={session}>
+              <ToastContainer />
+              {children}
+            </Provider>
           </main>
           <nav className="flex justify-between bg-blue-500">
             <Link

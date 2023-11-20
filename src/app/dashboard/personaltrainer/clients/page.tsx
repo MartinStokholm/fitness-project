@@ -1,4 +1,4 @@
-import CreateClientForm from "@/components/CreateClient";
+import CreateClientForm from "@/components/CreateClientForm";
 import ClientList from "@/components/ClientList";
 import { getAllClients } from "@/server/actions";
 
