@@ -1,4 +1,4 @@
-import CreatePersonalTrainer from "@/components/CreatePersonalTrainer";
+import CreatePersonalTrainer from "@/app/components/CreatePersonalTrainer";
 
 const ManagerPage = () => {
   return (

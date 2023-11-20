@@ -1,22 +1,9 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/options";
-import ExerciseList from "@/components/ExerciseList";
-import CreateExercise from "@/components/CreateExercise";
-import { ToastContainer } from "react-toastify";
+import ExerciseList from "@/app/components/ExerciseList";
+import CreateExercise from "@/app/components/CreateExercise";
+import { getAllExercises } from "@/app/server/actions";
 
 export default async function ExercisesPage() {
-  const session = await getServerSession(authOptions);
-  const token = session?.user?.token;
-  const url = "https://afefitness2023.azurewebsites.net/api/Exercises/";
-
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  const data = await response.json();
+  const exercises = await getAllExercises();
   return (
     <main className="flex items-center justify-between">
       <div className="w-full p-4">
@@ -30,7 +17,7 @@ export default async function ExercisesPage() {
           <h2 className="text-4xl text-center text-gray-800 pb-8">
             My exercises
           </h2>
-          <ExerciseList exercises={data} />
+          <ExerciseList exercises={exercises.data} />
         </div>
       </div>
     </main>

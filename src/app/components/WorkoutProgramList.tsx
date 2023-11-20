@@ -1,13 +1,13 @@
 "use client";
 
 import WorkoutProgram from "@/models/WorkoutProgram";
-import WorkoutProgramDetails from "@/components/WorkoutProgramDetails";
+import WorkoutProgramDetails from "@/app/components/WorkoutProgramDetails";
 import { useState } from "react";
 
 export default function WorkoutProgramList({
   workoutPrograms,
 }: {
-  workoutPrograms: WorkoutProgram[];
+  workoutPrograms: WorkoutProgram[] | undefined;
 }) {
   const [expandedRow, setExpandedRow] = useState<number | null>(null);
 
@@ -15,7 +15,7 @@ export default function WorkoutProgramList({
     setExpandedRow(expandedRow === workoutProgramId ? null : workoutProgramId);
   };
 
-  return workoutPrograms.map((workoutProgram) => (
+  return workoutPrograms?.map((workoutProgram) => (
     <div
       key={workoutProgram.workoutProgramId}
       className={`py-2 px-4 bg-green-100 cursor-pointer ${

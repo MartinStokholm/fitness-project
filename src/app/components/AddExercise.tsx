@@ -12,8 +12,8 @@ export default function AddExercise({
   workoutPrograms,
   exercises,
 }: {
-  workoutPrograms: WorkoutProgram[];
-  exercises: Exercise[];
+  workoutPrograms: WorkoutProgram[] | undefined;
+  exercises: Exercise[] | undefined;
 }) {
   const { data: session } = useSession();
   const [addingExistingExercise, setAddingExistingExercise] = useState(true);
@@ -76,7 +76,7 @@ export default function AddExercise({
 
   const handleExistingExerciseChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedExerciseId = parseInt(e.target.value, 10);
-    const selectedExercise = exercises.find(
+    const selectedExercise = exercises?.find(
       (exercise) => exercise.exerciseId === selectedExerciseId,
     );
     setSelectedExistingExercise(selectedExercise);
@@ -128,7 +128,7 @@ export default function AddExercise({
             <option value="" disabled>
               Choose a workout program
             </option>
-            {workoutPrograms.map((program) => (
+            {workoutPrograms?.map((program) => (
               <option
                 key={program.workoutProgramId}
                 value={program.workoutProgramId}
@@ -158,7 +158,7 @@ export default function AddExercise({
               <option value="" disabled>
                 Choose an existing exercise
               </option>
-              {exercises.map((exercise) => (
+              {exercises?.map((exercise) => (
                 <option key={exercise.exerciseId} value={exercise.exerciseId}>
                   {exercise.name}
                 </option>

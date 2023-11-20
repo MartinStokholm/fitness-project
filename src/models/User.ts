@@ -23,3 +23,5 @@ export type User = {
   personalTrainerId?: number;
   accountType?: string;
 };
+
+export default User;
