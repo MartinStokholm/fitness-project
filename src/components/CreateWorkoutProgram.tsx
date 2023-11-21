@@ -5,6 +5,7 @@ import { createWorkoutProgram } from "@/server/actions";
 import FormInput from "@/components/FormInput";
 import FormSubmit from "@/components/FormSubmit";
 import { User } from "@/models/User";
+import useToast from "@/hooks/useToast";
 
 export default function CreateWorkoutProgram({
   clients,
@@ -16,6 +17,10 @@ export default function CreateWorkoutProgram({
     success: null,
   };
   const [state, formAction] = useFormState(createWorkoutProgram, initialState);
+  const showToast = useToast();
+  if (state.success) {
+    showToast(state.success, "success");
+  }
 
   return (
     <form className="max-w-md mx-auto mt-8" action={formAction}>
