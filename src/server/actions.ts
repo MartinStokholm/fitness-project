@@ -7,6 +7,7 @@ import Exercise from "@/models/Exercise";
 import User from "@/models/User";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import axios from "axios";
+import { redirect } from "next/navigation";
 
 export async function getAllClients() {
   const session = await getServerSession(authOptions);
@@ -148,16 +149,18 @@ export async function addExercise(prevState: any, formData: FormData) {
     const url =
       "https://afefitness2023.azurewebsites.net/api/Exercises/Program/" +
       formData.get("workoutProgram");
-    await axios.post(url, exerciseToAdd, {
+    const response = await axios.post(url, exerciseToAdd, {
       headers: {
         Authorization: `Bearer ${session?.user?.token}`,
         Accept: "application/json",
       },
     });
+    console.log(response);
     revalidateTag("trainerWorkoutPrograms");
     revalidateTag("clientWorkoutPrograms");
     return { message: "Exercise added successfully", success: true };
   } catch (error) {
+    console.log(error);
     return { message: `Failed with error: ${error}`, success: false };
   }
 }
@@ -214,4 +217,10 @@ export async function createPersonalTrainer(
   } catch (error) {
     return { message: `Failed with error: ${error}`, success: false };
   }
+}
+
+export async function checkSession() {
+  const session = await getServerSession(authOptions);
+  if (session === null || session === undefined) redirect("/api/auth/signin");
+  return { role: session?.user?.role, name: session?.user?.name };
 }

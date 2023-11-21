@@ -7,11 +7,11 @@ interface SubmitProps {
 
 const FormSubmit = ({ pending, state }: SubmitProps) => {
   return (
-    <div className="mb-4 text-center">
+    <div className="mb-4 text-center px-auto">
       <button
         type="submit"
         aria-disabled={pending}
-        className="bg-blue-500 text-white p-2 rounded-md"
+        className="bg-blue-500 text-white p-2 rounded-md mx-auto w-full"
       >
         Submit
       </button>

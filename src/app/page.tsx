@@ -1,29 +1,37 @@
-import { authOptions } from "./api/auth/[...nextauth]/options";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import { authOptions } from "./api/auth/[...nextauth]/options";
+import { ToastContainer } from "react-toastify";
+import { getServerSession } from "next-auth";
+
 export default async function Home() {
   const session = await getServerSession(authOptions);
   return (
-    <main className="flex min-h-screen flex-col items-center pt-8">
-      <h1 className="text-6xl pb-4">The Fitness App</h1>
-      <div className="p-8 bg-blue-400 rounded">
-        <h2 className="font-bold">Welcome {session?.user?.name}!</h2>
-        <p className="text-white text-opacity-75">
-          This is a fitness app that can be used by personal trainers and their
-          clients.
+    <main className="flex min-h-screen flex-col items-center">
+      <div className="p-8 bg-blue-100 rounded-b-2xl">
+        <h2 className="font-bold text-2xl mb-8">
+          Welcome {session?.user?.name}!<br></br>
+          <p>You are logged in as a {session?.user?.role}</p>
+        </h2>
+
+        <p className="text-black text-opacity-75">
+          <p className="text-center text-6xl pb-8">
+            To get started, go to your dashboard!
+          </p>
         </p>
-        <p className="text-white text-opacity-75">
-          To get started, go to your{" "}
-          <Link
-            className="underline text-white text-opacity-75"
-            href={"/dashboard/{role}"}
-            as={`/dashboard/${session?.user?.role?.toLowerCase()}`}
-          >
-            Dashboard
-          </Link>
-        </p>
+        <Link
+          className="text-black text-6xl text-center"
+          href={"/dashboard/{role}"}
+          as={`/dashboard/${session?.user?.role?.toLowerCase()}`}
+        >
+          <p className="animate-bounce pt-4">⬇️⬇️⬇️⬇️⬇️⬇️⬇️</p>
+          <p className="p-4 m-2 animate-bounce text-black font-semibold">
+            ➡️ :.Dashboard.:⬅️
+          </p>
+          <p className="animate-bounce py-4">⬆️⬆️⬆️⬆️⬆️⬆️⬆️</p>
+        </Link>
       </div>
+      <ToastContainer />
     </main>
   );
 }
