@@ -31,20 +31,13 @@ export default async function RootLayout({
           <header className="bg-green-100 flex justify-center item-center">
             <Link
               className="mx-2 p-4 text-black font-semibold hover:text-white"
-              href={"/dashboard/{role}"}
-              as={`/dashboard/${role?.toLowerCase()}`}
-            >
-              Dashboard ({role})
-            </Link>
-            <Link
-              className="mx-2 p-4 text-black font-semibold hover:text-white"
               href={"/"}
             >
               Home
             </Link>
           </header>
 
-          <main className="flex min-h-screen flex-col items-center px-8">
+          <main className="flex min-h-screen flex-col items-center">
             <Provider session={session}>{children}</Provider>
           </main>
           <nav className="flex justify-between bg-green-100">

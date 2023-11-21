@@ -1,24 +1,20 @@
 "use client";
 
-import Exercise from "@/models/Exercise";
-import { User } from "@/models/User";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 import { createWorkoutProgram } from "@/server/actions";
 import FormInput from "@/components/FormInput";
 import FormSubmit from "@/components/FormSubmit";
+import { User } from "@/models/User";
 
 export default function CreateWorkoutProgram({
-  exercises,
   clients,
 }: {
-  exercises: Exercise[] | undefined;
   clients: User[] | undefined;
 }) {
   let initialState = {
     message: null,
     success: null,
   };
-  const { pending, data } = useFormStatus();
   const [state, formAction] = useFormState(createWorkoutProgram, initialState);
 
   return (
@@ -48,7 +44,7 @@ export default function CreateWorkoutProgram({
           ))}
         </select>
       </div>
-      <FormSubmit pending={pending} state={state} />
+      <FormSubmit state={state} />
     </form>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormStatus, useFormState } from "react-dom";
+import { useFormState } from "react-dom";
 import { createExercise } from "@/server/actions";
 import FormInput from "@/components/FormInput";
 import FormSubmit from "@/components/FormSubmit";
@@ -10,7 +10,6 @@ export default function CreateExerciseForm() {
     message: null,
     success: null,
   };
-  const { pending, data } = useFormStatus();
   const [state, formAction] = useFormState(createExercise, initialState);
 
   return (
@@ -25,7 +24,7 @@ export default function CreateExerciseForm() {
         required
       />
       <FormInput label="Time" name="time" type="text" required />
-      <FormSubmit pending={pending} state={state} />
+      <FormSubmit state={state} />
     </form>
   );
 }

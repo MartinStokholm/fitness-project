@@ -1,5 +1,3 @@
-"use client";
-
 import User from "@/models/User";
 
 export default function ClientList({
@@ -8,15 +6,16 @@ export default function ClientList({
   clients: User[] | undefined;
 }) {
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-semibold mb-4">Clients List</h2>
-
+    <div className="bg-white p-4 rounded-md shadow-md ">
       {clients?.length === 0 ? (
         <p>No clients available.</p>
       ) : (
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <ul>
           {clients?.map((client) => (
-            <li key={client.userId} className="bg-white p-4 rounded shadow-md">
+            <li
+              key={client.userId}
+              className="py-2 flex flex-wrap justify-between w-full"
+            >
               <p className="text-lg font-semibold mb-2">
                 {client.firstName} {client.lastName}
               </p>

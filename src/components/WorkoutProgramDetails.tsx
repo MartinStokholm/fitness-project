@@ -1,5 +1,4 @@
 import WorkoutProgram from "@/models/WorkoutProgram";
-import exercise from "@/models/Exercise";
 
 export default function WorkoutProgramDetails({
   workoutProgram,
@@ -27,13 +26,16 @@ export default function WorkoutProgramDetails({
                 </div>
                 <p className="text-gray-500 mx-8">{exercise.description}</p>
               </div>
-              <div className="flex mt-4 justify-between mx-12 mb-6">
-                <p className="text-2xl font-bold">
-                  {" "}
-                  Sets: {exercise.sets || "N/A"}
-                </p>
-                <p className="text-2xl font-bold">
-                  Repetitions: {exercise.repetitions || "N/A"}
+
+              <div className="flex mt-4 justify-between mx-8 mb-6">
+                <p className="text-2xl font-light">
+                  {"Perform: "}
+                  {exercise.sets || "N/A"}
+                  {exercise.sets === 1 ? " set " : " sets "}
+                  of {exercise.repetitions || "N/A"}
+                  {exercise.repetitions === 1
+                    ? " repetition "
+                    : " repetitions "}
                 </p>
               </div>
             </div>

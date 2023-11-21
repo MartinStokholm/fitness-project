@@ -8,8 +8,8 @@ export default async function ManagerPage() {
     redirect("/dashboard/" + session?.role?.toLowerCase());
   }
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-      <div className="w-full p-4">
+    <main className="px-4 flex min-h-screen flex-col items-center justify-between">
+      <div className="p-4 min-w-full">
         <div className="bg-blue-200 p-6 shadow-2xl border-4 border-blue-100-300 rounded-t-2xl mb-12">
           <h2 className="text-4xl text-center text-gray-800 pb-8">
             Create a personal trainer

@@ -9,31 +9,26 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div className="p-8 bg-blue-100 rounded-b-2xl">
-        <h2 className="font-bold text-2xl mb-8">
+        <h2 className="font-bold text-2xl mb-8 text-center">
           Welcome {session?.user?.name}!<br></br>
           <p>You are logged in as a {session?.user?.role}</p>
         </h2>
 
-        <p className="text-black text-opacity-75">
-          <p className="text-center text-6xl pb-8">
-            To get started, go to your dashboard!
-          </p>
+        <p className="text-black text-opacity-75 text-center text-4xl pb-8">
+          To get started, go to your dashboard!
         </p>
         <Link
           className="text-black text-6xl text-center"
           href={"/dashboard/{role}"}
           as={`/dashboard/${session?.user?.role?.toLowerCase()}`}
         >
-          <p className="animate-bounce pt-4">⬇️⬇️⬇️⬇️⬇️⬇️⬇️</p>
           <p className="p-4 m-2 animate-bounce text-black font-semibold">
-            ➡️ :.Dashboard.:⬅️
+            CLICK ME!️
           </p>
-          <p className="animate-bounce py-4">⬆️⬆️⬆️⬆️⬆️⬆️⬆️</p>
         </Link>
       </div>
       <ToastContainer />
       {/*TODO ADD TOASTING ON FORMS*/}
-      {/*TODO FIX STYLING WORKOUT DETAILS COLLAPSING/SHOW */}
       {/*TODO ADD LOADING SKELETON*/}
     </main>
   );
