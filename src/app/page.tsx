@@ -32,6 +32,9 @@ export default async function Home() {
         </Link>
       </div>
       <ToastContainer />
+      {/*TODO ADD TOASTING ON FORMS*/}
+      {/*TODO FIX STYLING WORKOUT DETAILS COLLAPSING/SHOW */}
+      {/*TODO ADD LOADING SKELETON*/}
     </main>
   );
 }
