@@ -6,8 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="4141b4a7-5896-4a6c-8aad-2d98794daf02" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/client/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/client/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/manager/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/manager/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/clients/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/clients/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/exercises/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/exercises/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/workoutprograms/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/personaltrainer/workoutprograms/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CreateWorkoutProgram.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateWorkoutProgram.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormSubmit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormSubmit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WorkoutProgramDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WorkoutProgramDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WorkoutProgramList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WorkoutProgramList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/actions.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +97,7 @@
       <workItem from="1699980661754" duration="599000" />
       <workItem from="1700069636104" duration="11783000" />
       <workItem from="1700162999054" duration="2900000" />
-      <workItem from="1700403932102" duration="34124000" />
+      <workItem from="1700403932102" duration="42480000" />
     </task>
     <servers />
   </component>

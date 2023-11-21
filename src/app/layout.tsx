@@ -28,10 +28,7 @@ export default async function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <div></div>
-          <header
-            className="bg-gradient-to-r from-green-400 to-blue-500 flex justify-center items-center"
-            style={{ height: "2.5rem" }}
-          >
+          <header className="bg-green-100 flex justify-center item-center">
             <Link
               className="mx-2 p-4 text-black font-semibold hover:text-white"
               href={"/dashboard/{role}"}
@@ -47,15 +44,12 @@ export default async function RootLayout({
             </Link>
           </header>
 
-          <main className="flex min-h-screen flex-col items-center p-4">
-            <Provider session={session}>
-              <ToastContainer />
-              {children}
-            </Provider>
+          <main className="flex min-h-screen flex-col items-center px-8">
+            <Provider session={session}>{children}</Provider>
           </main>
-          <nav className="flex justify-between bg-blue-500">
+          <nav className="flex justify-between bg-green-100">
             <Link
-              className="mx-2 p-4 text-black font-semibold hover:text-white"
+              className="mx-2 p-4 font-semibold text-black"
               href={"/api/auth/signout"}
             >
               Logout
