@@ -1,7 +1,7 @@
 "use client";
 
 import { createClient } from "@/server/actions";
-import { useFormStatus, useFormState } from "react-dom";
+import { useFormState } from "react-dom";
 import FormInput from "@/components/FormInput";
 import FormSubmit from "@/components/FormSubmit";
 
@@ -10,7 +10,6 @@ export default function CreateClientForm() {
     message: null,
     success: null,
   };
-  const { pending, data } = useFormStatus();
   const [state, formAction] = useFormState(createClient, initialState);
 
   return (
@@ -20,7 +19,7 @@ export default function CreateClientForm() {
         <FormInput label="Last Name" name="lastName" type="text" required />
         <FormInput label="Email" name="email" type="email" required />
         <FormInput label="Password" name="password" type="password" required />
-        <FormSubmit pending={pending} state={state} />
+        <FormSubmit state={state} />
       </form>
     </>
   );
