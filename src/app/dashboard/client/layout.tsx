@@ -5,11 +5,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <main className="flex">
       <div className="flex justify-start ">
         <div className="flex flex-col justify-start bg-green-100 min-w-[200px]">
-          <DashboardNav
-            route="workoutprograms"
-            title="Programs"
-            bgColor="bg-amber-500"
-          />
+          <DashboardNav route="/" title="Programs" bgColor="bg-amber-500" />
         </div>
       </div>
       {children}
